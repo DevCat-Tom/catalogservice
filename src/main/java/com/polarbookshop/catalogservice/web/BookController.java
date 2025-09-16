@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("books")
-public class BoolController {
+public class BookController {
 
     private BookService bookService;
 
-    public BoolController(BookService bookService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
