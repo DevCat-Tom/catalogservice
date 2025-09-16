@@ -1,0 +1,8 @@
+server:
+  port: 9001
+  tomcat:
+    connection-timeout: 2s
+    keep-alive-timeout: 15s
+    threads:
+      max: 50       # Time between accepting TCP connection and first HTTP request
+      min-spare: 5  # Timeout between HTTP requests
