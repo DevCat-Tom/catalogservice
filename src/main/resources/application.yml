@@ -4,6 +4,7 @@ spring:
   config:
     import: "optional:configserver:" # If config server is running, get properties
   cloud:
+    # **Configuration Server**
     config:
       uri: http://localhost:8888 # The URL of the configuration server
       request-connect-timeout: 5000 # waiting to connect to the config server (ms)
@@ -15,6 +16,21 @@ spring:
         max-interval: 2000
         multiplier: 1.1 # On each retry: timeout = initial-interval * multiplier
 
+  # **Database**
+  datasource:
+    username: user
+    password: password
+    url: jdbc:postgresql://localhost:5432/polardb_catalog # Which database you want to establish a connection
+    hikari:
+      connection-timeout: 2000 # Max time to get a connection from the pool
+      maximum-pool-size: 5
+
+  # **Execute: src/main/resources/schema.sql**
+  sql:
+    init:
+      mode: always
+
+# **This Server**
 server:
   port: 9001
   tomcat:
@@ -31,5 +47,6 @@ management:
       exposure:
         include: refresh
 
+# **Custom Properties**
 polar:
   greeting: Welcome to the local book catalog!
