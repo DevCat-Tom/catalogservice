@@ -29,6 +29,11 @@ ext {
 }
 
 dependencies {
+    // Flyway version 10.0.0 and later have modularized database support, moving
+    // it out of the flyway-core dependency into dedicated modules to improve
+    // maintainability and reduce the distribution size.
+    implementation 'org.flywaydb:flyway-database-postgresql'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
