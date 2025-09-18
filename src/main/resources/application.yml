@@ -1,3 +1,20 @@
+spring:
+  application:
+    name: catalog-service
+  config:
+    import: "optional:configserver:" # If config server is running, get properties
+  cloud:
+    config:
+      uri: http://localhost:8888 # The URL of the configuration server
+      request-connect-timeout: 5000 # waiting to connect to the config server (ms)
+      request-read-timeout: 5000  # waiting to read configuration data from the config server (ms)
+      fail-fast: true # Enables retry behavior!
+      retry:
+        max-attempts: 6
+        initial-interval: 1000
+        max-interval: 2000
+        multiplier: 1.1 # On each retry: timeout = initial-interval * multiplier
+
 server:
   port: 9001
   tomcat:
@@ -6,6 +23,13 @@ server:
     threads:
       max: 50       # Time between accepting TCP connection and first HTTP request
       min-spare: 5  # Timeout between HTTP requests
+
+# Enable actuator 'refresh' endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
 
 polar:
   greeting: Welcome to the local book catalog!
