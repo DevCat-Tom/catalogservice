@@ -6,3 +6,6 @@ server:
     threads:
       max: 50       # Time between accepting TCP connection and first HTTP request
       min-spare: 5  # Timeout between HTTP requests
+
+polar:
+  greeting: Welcome to the local book catalog!
