@@ -62,6 +62,20 @@ bootRun {
     systemProperty 'spring.profiles.active', 'testdata'
 }
 
+// Configuration for containerizing Catalog Service
+bootBuildImage {
+    imageName = "${project.name}"
+    environment = ["BP_JVM_VERSION": "17.*"]
+    // Section to configure the connection with a container registry
+    docker {
+        publishRegistry {
+            username = project.findProperty("registryUsername")
+            password = project.findProperty("registryToken")
+            url = project.findProperty("registryUrl")
+        }
+    }
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }

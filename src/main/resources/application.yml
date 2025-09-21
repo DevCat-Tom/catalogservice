@@ -9,7 +9,7 @@ spring:
       uri: http://localhost:8888 # The URL of the configuration server
       request-connect-timeout: 5000 # waiting to connect to the config server (ms)
       request-read-timeout: 5000  # waiting to read configuration data from the config server (ms)
-      fail-fast: true # Enables retry behavior!
+      fail-fast: false # Enables retry behavior!
       retry:
         max-attempts: 6
         initial-interval: 1000
