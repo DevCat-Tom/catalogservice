@@ -1,6 +1,10 @@
 spring:
   application:
     name: catalog-service
+  lifecycle:
+    # OnShutdown: spend processing all the pending requests within x sec
+    # Update the Deployment manifest accordingly
+    timeout-per-shutdown-phase: 15s
   config:
     import: "optional:configserver:" # If config server is running, get properties
   cloud:
@@ -27,6 +31,7 @@ spring:
 # **This Server**
 server:
   port: 9001
+  shutdown: graceful
   tomcat:
     connection-timeout: 2s
     keep-alive-timeout: 15s
